@@ -25,7 +25,7 @@ You can access the live application here: [Note Taking App](https://note-taking-
 ### Installation
 1. Clone the repository
     ```shell
-    git clone https://github.com/github_username/repo_name.git
+    git clone https://github.com/ABarnesDev/note-taking-web-app.git
     ```
 2. Create a PostgreSQL database.
 3. In `server/src/main/resources/application-dev.properties`, change the values of `spring.datasource.url`, `spring.datasource.username`, and `spring.datasource.password` to match your database's configuration.
