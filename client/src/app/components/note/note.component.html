@@ -1,0 +1,37 @@
+
+<div id="note">
+
+  @if (note) {
+    <div id="noteContent">
+      <div id="noteDetails">
+        <input type="text" name="titleInput" id="titleInput" placeholder="Untitled" [formControl]="titleInput">
+        <button mat-icon-button aria-label="Details Button" (click)="this.openDialog()">
+          <mat-icon>info</mat-icon>
+        </button>
+      </div>
+      <div #editorRef id="editor"></div>
+    </div>
+    <div id="noteTags">
+      <mat-chip-grid #tagGrid aria-label="Note tags" [formControl]="tagInput">
+        @for (tag of note.tags; track tag.id) {
+          <mat-chip-row class="tag" (removed)="removeTag(tag)">
+            <span id="tagDetails"># {{tag.name}}</span>
+            <button matChipRemove aria-label="Remove tag">
+              <mat-icon id="test">close_small</mat-icon>
+            </button>
+          </mat-chip-row>
+        }
+        <input
+          #tag
+          placeholder="Add tag..."
+          [formControl]="tagInput"
+          [matChipInputFor]="tagGrid"
+          (matChipInputTokenEnd)="addTag({id: undefined, name: tag.value.toLocaleLowerCase()})"
+        />
+      </mat-chip-grid>
+    </div>
+  } @else {
+    <h1>Note not found</h1>
+  }
+</div>
+

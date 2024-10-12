@@ -1,0 +1,45 @@
+<div id="notes" [ngClass]="{'mobile': mobile}">
+
+  @if (!mobile || route.children.length == 0) {
+    <div id="allNotes" class="bg-amber-50">
+      <div id="searchNotes">
+        <button id="searchBtn" (click)="createNote()">Create Note <mat-icon>edit_note</mat-icon></button>
+        <input type="search" name="searchInput" id="searchInput" placeholder="Search notes" [formControl]="searchInput" (input)="searchNotes()">
+
+        @if (tags.length > 0) {
+          <mat-expansion-panel [(expanded)]="panelOpenState">
+            <mat-expansion-panel-header>
+              <mat-panel-title>{{ selectedTag?.name || "Filter By Tag" }}</mat-panel-title>
+            </mat-expansion-panel-header>
+            <ul id="tagsUl">
+              <li><span (click)="clearFilter()">All Tags</span></li>
+              @for (tag of tags; track tag.id) {
+                <li>
+                  <span (click)="filterTag(tag)">{{tag.name}}</span>
+                  <mat-icon aria-hidden="false" aria-label="Delete icon" fontIcon="delete" (click)="deleteTag(tag)"></mat-icon>
+                </li>
+              }
+            </ul>
+          </mat-expansion-panel>
+        }
+
+      </div>
+      @if (filteredNotes.length > 0) {
+        <ul id="listNotes">
+          @for (note of filteredNotes; track note.id) {
+            <li><a routerLink="{{note.id}}">{{note.title ? note.title : "Untitled"}}</a></li>
+          }
+        </ul>
+      }
+    </div>
+  }
+
+  @if (!mobile && route.children.length == 0) {
+    <div id="unselectedNote">
+      <h1>No note selected</h1>
+      <button (click)="createNote()">Create Note <mat-icon>edit_note</mat-icon></button>
+    </div>
+  }
+
+  <router-outlet></router-outlet>
+</div>

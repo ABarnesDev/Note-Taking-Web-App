@@ -1,0 +1,30 @@
+<div id="noteReport">
+  <h1>Note report</h1>
+  <p>This is a detailed report of all the notes you have made</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Tags</th>
+        <th>Date Created</th>
+        <th>Last Updated</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @for (note of notes; track note.id) {
+        <tr>
+          <td>{{ note.title }}</td>
+          <td>
+            @for (tag of note.tags; track tag.id) {
+              <span>{{tag.name}} </span>
+            }
+          </td>
+          <td>{{ note.createDate | date: 'short' }}</td>
+          <td>{{ note.lastUpdate | date: 'short' }}</td>
+        </tr>
+      }
+
+    </tbody>
+  </table>
+</div>

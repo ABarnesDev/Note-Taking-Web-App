@@ -1,0 +1,22 @@
+<div id="taskList">
+  <div id="tasks">
+    <h1>Tasks for {{currentDate | date: 'mediumDate'}}</h1>
+
+    <button id="dialogBtn" (click)="openDialog()">Create/View tasks for another day</button>
+    <form [formGroup]="taskForm" (submit)="createTask()">
+      <input type="text" name="taskInput" id="taskInput" formControlName="content" placeholder="Create new task">
+      <button type="submit">Save Task</button>
+    </form>
+
+    @if (tasks.length > 0) {
+      <ul>
+        @for (task of tasks; track task.id) {
+          <li>
+            <span><input type="checkbox" id="taskCheckbox" [checked]="task.isCompleted" (click)="updateTask(task)">{{task.content}}</span>
+            <button class="deleteBtn" aria-label="Toggle sidenav" (click)="deleteTask(task)" mat-icon-button><mat-icon aria-label="Delete icon">delete</mat-icon></button>
+          </li>
+        }
+      </ul>
+    }
+  </div>
+</div>

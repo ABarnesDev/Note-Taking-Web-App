@@ -1,0 +1,29 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav class="sidenav" >
+    <mat-toolbar>Note taking app</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/notes">View Notes</a>
+      <a mat-list-item routerLink="/tasks">View Tasks</a>
+      <a mat-list-item routerLink="/note-report">View Note Report</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="sidenav.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+
+      <span>Note taking app</span>
+      <button mat-icon-button id="profileBtn" (click)="openDialog()"><mat-icon aria-label="Side nav toggle icon" inline="true">account_circle</mat-icon></button>
+    </mat-toolbar>
+
+    <main>
+      <router-outlet />
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>

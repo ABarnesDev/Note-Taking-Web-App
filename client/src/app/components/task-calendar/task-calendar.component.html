@@ -1,0 +1,7 @@
+<h2 mat-dialog-title>Select date for tasks</h2>
+<mat-dialog-content>
+  <mat-calendar [(selected)]="selected"></mat-calendar>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="selected" >Select Date</button>
+</mat-dialog-actions>

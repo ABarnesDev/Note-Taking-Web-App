@@ -1,0 +1,35 @@
+<div>
+  <h1>Log in</h1>
+
+  <form [formGroup]="loginForm" (ngSubmit)="submitLogin()">
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput id="emailInput" type="email" placeholder="Enter email" formControlName="email" required>
+
+      @if (loginForm.controls.email.hasError('incorrectEmail')) {
+        <mat-error>User with this email not found</mat-error>
+      } @else {
+        <mat-error>Invalid Email</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput id="passwordInput" [type]="passwordVisible ? 'text' : 'password'" placeholder="Enter password" formControlName="password" required>
+
+      <button type="button" (click)="togglePassword()" mat-icon-button matSuffix>
+        <mat-icon>{{passwordVisible ? 'visibility' : 'visibility_off'}}</mat-icon>
+      </button>
+
+      @if (loginForm.controls.password.hasError('incorrectPassword')) {
+        <mat-error>Incorrect Password</mat-error>
+      } @else {
+        <mat-error>Password Required</mat-error>
+      }
+    </mat-form-field>
+
+    <button type="submit" [disabled]="!loginForm.valid">Log in</button>
+  </form>
+
+  <span>Don't have an account? <a routerLink="/signup">Sign up</a></span>
+</div>
