@@ -3,7 +3,7 @@
 ## Project Overview
 This web app was initially built as a school project. This full-stack web application allows users to create, manage, and organize personal notes. It also allows users to create daily task lists. In addition to this, the web app also implements JWTs for secure user authentication, ensuring that authenticated users can only access their notes and tasks. The web app uses Spring Boot for the backend, Angular for the front end, and PostgreSQL for the database.
 
-You can access the live application here: [Note Taking App](https://note-taking-app-faexdkabfbgycscx.eastus2-01.azurewebsites.net/)
+This web app is being hosted on Microsoft Azure. You can access the live application here: [Note Taking App](https://note-taking-app-faexdkabfbgycscx.eastus2-01.azurewebsites.net/)
 
 ### Technologies Used
 * Spring Boot
